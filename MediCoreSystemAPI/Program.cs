@@ -14,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ================= DB ===================
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ============= Services & Repo ===========
 builder.Services.AddScoped<IAccountService, AccountService>();
