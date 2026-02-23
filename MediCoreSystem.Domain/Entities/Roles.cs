@@ -1,0 +1,23 @@
+﻿using Domain.Common;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MediCoreSystem.Domain.Entites
+{
+    public class Roles : BaseEntity
+    {
+        [Required]
+        [MaxLength(100)]
+        public string Name_Ar { get; set; }
+
+        [MaxLength(100)]
+        public string Name_En { get; set; }
+       
+        public ICollection<RolePermission>? RolePermissions { get; set; }
+
+    }
+}
