@@ -1,5 +1,4 @@
 ﻿using Application.Common;
-using Application.IService;
 using Application.Service.Impl.BaseServiceImpl;
 using AutoMapper;
 using MediCoreSystem.Aplication.DTOs;
@@ -7,9 +6,6 @@ using MediCoreSystem.Aplication.IService;
 using MediCoreSystem.Domain.Entites;
 using MediCoreSystem.Domain.IRepository;
 using Microsoft.Extensions.Logging;
-using Org.BouncyCastle.Crypto.Generators;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
 
 
 public class UserService : BaseService<Users, UserDTO>, IUserService

@@ -5,9 +5,7 @@ using MediCoreSystem.Infrastructure.Data;
 using MediCoreSystem.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,16 +16,39 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ============= Services & Repo ===========
+
+// 🔐 System (الموجود عندك)
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<IRolesService, RolesService>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
+
 builder.Services.AddScoped<IPermissionsService, PermissionService>();
 builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
+
+
+// Patients
+builder.Services.AddScoped<IPatientsService, PatientsService>();
+builder.Services.AddScoped<IPatientsRepository, PatientsRepository>();
+
+// Doctors
+builder.Services.AddScoped<IDoctorsService, DoctorsService>();
+builder.Services.AddScoped<IDoctorsRepository, DoctorsRepository>();
+
+// Departments
+builder.Services.AddScoped<IDepartmentsService, DepartmentsService>();
+builder.Services.AddScoped<IDepartmentsRepository, DepartmentsRepository>();
+
+// Appointments
+builder.Services.AddScoped<IAppointmentsService, AppointmentsService>();
+builder.Services.AddScoped<IAppointmentsRepository, AppointmentsRepository>();
 builder.Services.AddHttpContextAccessor(); // إذا كنت تستخدم .NET 6+
 builder.Services.AddLogging();
 
